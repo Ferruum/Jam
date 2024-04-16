@@ -1,10 +1,28 @@
 package com.example.demo.models;
 
+import jakarta.persistence.*;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "Reviews")
 public class Reviews {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @NotNull
+    @Column(name = "namecut")
     private String namecut;
+    @NotBlank
+    @Column(name = "clientname")
     private String clientname;
+    @NotBlank
+    @Column(name = "raiting")
     private String raiting;
+    @NotBlank
+    @Column(name = "comment")
     private String comment;
 
     public Reviews(int id, String namecut, String clientname, String raiting, String comment) {
@@ -14,7 +32,7 @@ public class Reviews {
         this.raiting = raiting;
         this.comment = comment;
     }
-
+    public Reviews(){}
     public int getId() {
         return id;
     }

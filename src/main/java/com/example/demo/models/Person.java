@@ -1,9 +1,25 @@
 package com.example.demo.models;
 
+import jakarta.persistence.*;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="Person")
 public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @NotNull
+    @Column(name = "username")
     private String username;
+    @NotBlank
+    @Column(name = "email")
     private String email;
+    @NotBlank
+    @Column(name = "password")
     private String password;
 
     public Person(int id, String username, String email, String password) {
@@ -12,6 +28,8 @@ public class Person {
         this.email = email;
         this.password = password;
     }
+
+    public Person() {}
 
     public int getId() {
         return id;

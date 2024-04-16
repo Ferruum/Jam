@@ -1,10 +1,28 @@
 package com.example.demo.models;
 
+import jakarta.persistence.*;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "Employee")
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @NotNull
+    @Column(name = "name")
     private String name;
+    @NotBlank
+    @Column(name = "dolznost")
     private String dolznost;
+    @NotBlank
+    @Column(name = "zp")
     private String zp;
+    @NotBlank
+    @Column(name = "premiya")
     private String premiya;
 
     public Employee(int id, String name, String dolznost, String zp, String premiya) {
@@ -14,6 +32,8 @@ public class Employee {
         this.zp = zp;
         this.premiya = premiya;
     }
+
+    public Employee(){}
 
     public int getId() {
         return id;
